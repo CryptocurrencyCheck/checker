@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112988154-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-112988154-1');
+  </script>
+
+  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+  <!-- Bootstrap -->
+  <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <!-- jquery-ui -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" integrity="sha384-Nlo8b0yiGl7Dn+BgLn4mxhIIBU6We7aeeiulNCjHdUv/eKHx59s3anfSUjExbDxn" crossorigin="anonymous">
+  <!-- 共通のJavaScriptとcss -->
+  <script type="text/javascript" src="js/index.js"></script>
+  <!-- メイン部分のJavaScript -->
+  <script type="text/javascript" src="js/main.js"></script>
+  <!-- 設定部分のJavaScript -->
+  <script type="text/javascript" src="js/configuration.js"></script>
+  <!-- 各CSSファイル -->
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/configuration.css" />
+
+  <style type="text/css">
+    .card {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <!-- Home -->
+    <div class="tab-pane active" id="home" role="tabpanel">
+      <div class="container">
+        <div class="card-layout">
+          <!-- Loading -->
+          <div id="loading">
+            <div class="row">
+              <div class="col">
+                <img class="rounded mx-auto d-block" src="img/loading.gif">
+                <p class="text-center">Loading...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="main-body"><br /></div>
+      </div>
+    </div>
+
+    <!-- Profile -->
+    <div class="tab-pane" id="profile" role="tabpanel">
+      <div id="configure-body">
+        <div class="container">
+          <div class="card-layout">
+            <div class="card">
+              <div class="card-header">
+                暗号通貨の追加
+              </div>
+              <div class="card-body">
+                <form onsubmit="return false;">
+                  <div class="form-group">
+                    <input class="form-control" id="search-coin" list="coins-candidate" type="text"  />
+                    <button class="btn btn-primary" type="button" onclick="addCoinSelection()">追加</button>
+
+                    <!-- 取得できるコインは自動、その他のマイナーなコインは都度手打ち -->
+                    <datalist id="coins-candidate"></datalist>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        <div class="card">
+          <div class="card-header">
+            暗号通貨の削除
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <div id="coin-selection"></div>
+                <button class="btn btn-primary" type="button" onclick="removeCoinSelection()">チェックされている項目の削除</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            小数点の設定
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label>表示桁数：</label>
+                <select class="form-control" id="digit" onchange="changeDigit()">
+                            <option value="0">整数</option>
+                            <option value="1">小数点第一位</option>
+                            <option value="2">小数点第二位</option>
+                            <option value="3">小数点第三位</option>
+                            <option value="4">小数点第四位</option>
+                            <option value="5">小数点第五位</option>
+                            <option value="6">小数点第六位</option>
+                            <option value="7">小数点第七位</option>
+                            <option value="8">小数点第八位</option>
+                            <option value="9">小数点第九位</option>
+                            <option value="10">小数点第十位</option>
+                            <option value="11">小数点第十一位</option>
+                            <option value="12">小数点第十二位</option>
+                            <option value="13">小数点第十三位</option>
+                            <option value="14">小数点第十四位</option>
+                            <option value="15">小数点第十五位</option>
+                            <option value="16">小数点第十六位</option>
+                            <option value="17">小数点第十七位</option>
+                            <option value="18">小数点第十八位</option>
+                            <option value="19">小数点第十九位</option>
+                            <option value="20">小数点第二十位</option>
+                          </select>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- End of container -->
+      </div>
+      <!-- End of tab-pane(Profile) -->
+    </div>
+    <!-- End of tab-content -->
+  </div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs nav-justified" style="width: 100%;position: fixed;bottom: 0px;font-size:20px;backgroud-color:white;background-color:white;border:1px solid #cccccc;" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home" role="tab">ホーム</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#profile" role="tab">設定</a>
+    </li>
+  </ul>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX" crossorigin="anonymous"></script>
+</body>
+
+</html>
